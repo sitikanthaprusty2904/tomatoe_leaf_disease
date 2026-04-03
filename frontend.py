@@ -44,7 +44,7 @@ import requests
 from PIL import Image
 import io
 import time
-
+url="https://leafscan-10.onrender.com/predict"
 # 1. Page Configuration (Must be the first Streamlit command)
 st.set_page_config(
     page_title="LeafScan AI",
@@ -120,7 +120,7 @@ if uploaded_file is not None:
                 files = {"file": (uploaded_file.name, bytes_data, uploaded_file.type)}
                 
                 try:
-                    response = requests.post("http://127.0.0.1:8000/predict", files=files)
+                    response = requests.post(url, files=files)
 
                     if response.status_code == 200:
                         result = response.json()
